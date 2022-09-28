@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cube.h"
+#define PI 3.14159
 
 int	just_say_yes_or_no(int key)
 {
@@ -32,15 +33,37 @@ int	key_hook(int key, t_fdf *data)
 	if (key == 124)
 		data->shift_x += 30;
 	if (key == 13)
-		data->angle_y += 0.05;
+		printf("w\n");
+		data->px+=data->pdx;
+		data->py+=data->pdy; 
+		//data->angle_y += 0.05;
 	if (key == 1)
-		data->angle_y -= 0.05;
+		data->px-=data->pdx;
+		data->py+-data->pdy;
+		printf("s\n");
+		//data->angle_y -= 0.05;
 	if (key == 53)
 		close_window(0);
 	if (key == 0)
-		data->rotation += 0.05;
+		printf("a\n");
+		data->pa-=0.1;
+		if(data->pa < 0)
+		{
+			data->pa+=2*PI;
+		} 
+		data->pdx=cos(data->pa)*5;
+		data->pdy=sin(data->pa)*5;
+		//data->rotation += 0.05;
 	if (key == 2)
-		data->rotation -= 0.05;
+		printf("d\n");
+		data->pa+-0.1;
+		if (data->pa > 2 * PI)
+		{
+			data->pa-=2*PI;
+		}
+		data->pdx=cos(data->pa)*5;
+		data->pdy=sin(data->pa)*5;
+		//data->rotation -= 0.05;
 	if (just_say_yes_or_no(key))
 	{
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);

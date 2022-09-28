@@ -40,6 +40,9 @@ typedef struct s_fdf
 	double	angle_x;
 	double	angle_y;
 	double	rotation;
+	
+	float px,py,pdx,pdy,pa;
+
 	float	x_temp;
 	float	y_temp;
 

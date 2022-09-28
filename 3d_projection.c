@@ -73,6 +73,6 @@ void	isometric_convert(t_fdf *data, t_curr	*temp)
 	z1 = data->z_matrix[(int)temp->y1][(int)temp->x1];
 	zoom(data, temp);
 	color(z, z1, data);
-	//isometric_and_rotate(z, z1, data, temp);
+	isometric_and_rotate(z, z1, data, temp);
 	shift(data, temp);
 }
